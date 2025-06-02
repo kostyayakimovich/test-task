@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import { provide } from 'vue';
 import { RouterLink, RouterView } from 'vue-router'
+
+provide('userName', 'Tolik')
 </script>
 
 <template>
@@ -7,13 +10,11 @@ import { RouterLink, RouterView } from 'vue-router'
     <div class="wrapper">
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/images">Images</RouterLink>
-        <RouterLink to="/mdat">Mdat</RouterLink>
-        <RouterLink to="/other-types">Other Types</RouterLink>
+        <RouterLink to="/posts">Posts</RouterLink>
+        <RouterLink to="/users">Users</RouterLink>
       </nav>
     </div>
   </header>
-
   <RouterView />
 </template>
 

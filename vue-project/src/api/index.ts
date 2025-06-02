@@ -1,15 +1,28 @@
-import { DEMO_CASTLABS_URL } from '@/constants'
+import { APP_URL } from '@/constants'
+import type { Post, User } from '@/models'
 
-export const getArrayBuffer = async (): Promise<ArrayBuffer | null> => {
+export const getPosts = async (): Promise<Post[] | []> => {
   try {
-    const response = await fetch(DEMO_CASTLABS_URL)
-    const arrayBufferData = await response.arrayBuffer()
-    if (arrayBufferData) {
-      console.log(`Successfully loaded file ${DEMO_CASTLABS_URL}`)
-      return arrayBufferData
+    const response = await fetch(`${APP_URL}/posts`)
+    const posts = await response.json()
+    if (posts) {
+      return posts
     }
   } catch (error) {
     console.error(error)
   }
-  return null
+  return []
+}
+
+export const getUsers = async (): Promise<User[] | []> => {
+  try {
+    const response = await fetch(`${APP_URL}/users`)
+    const users = await response.json()
+    if (users) {
+      return users
+    }
+  } catch (error) {
+    console.error(error)
+  }
+  return []
 }
